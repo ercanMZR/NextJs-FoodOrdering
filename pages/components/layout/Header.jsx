@@ -18,7 +18,7 @@ const Header = () => {
 
   const router = useRouter();
 
-  console.log(router.asPath);
+ 
 
   return (
     <div
