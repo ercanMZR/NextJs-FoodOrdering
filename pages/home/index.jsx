@@ -3,6 +3,7 @@ import Campaigns from '../components/ui/Campaigns';
 import Carousel from '../components/Carousel';
 import MenuWrapper from '../components/product/MenuWrapper';
 import About from '../components/ui/About';
+import Reservation from '../components/Reservation';
 
 
 const Index = () => {
@@ -13,6 +14,7 @@ const Index = () => {
       <Campaigns />
       <MenuWrapper/>
       <About/>
+      <Reservation/>
       </div>
      
     </div>
