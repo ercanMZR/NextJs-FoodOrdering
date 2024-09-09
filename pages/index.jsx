@@ -1,6 +1,7 @@
 
 import Head from "next/head";
 import Header from "./components/layout/Header";
+import Input from "./components/form/Input";
 
 import Home from "./home";
 
@@ -20,6 +21,9 @@ export default function Index({ }) {
 </Head>
 <Header></Header>
 <Home />
+<div className="p-20 container mx-auto">
+  <Input/>
+</div>
       
     </div>
   );
