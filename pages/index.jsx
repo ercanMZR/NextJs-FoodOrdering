@@ -4,6 +4,7 @@ import Header from "./components/layout/Header";
 import Input from "./components/form/Input";
 
 import Home from "./home";
+import Footer from "./components/layout/Footer";
 
 export default function Index({ }) {
   return (
@@ -21,6 +22,7 @@ export default function Index({ }) {
 </Head>
 <Header></Header>
 <Home />
+<Footer/>
 
       
     </div>
