@@ -8,6 +8,7 @@ import Title from '../ui/Title';
 import Search from '../ui/Search';
 import { GiHamburgerMenu, GiCancel } from "react-icons/gi";
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 
 
@@ -33,10 +34,10 @@ const Header = () => {
           }`}
         >
         <ul className='flex gap-x-2 sm:flex-row flex-col items-center'>
-          <li className='px-[5px] py-[10px] uppercase hover:text-primary cursor-pointer'><a href=""></a>HOME</li>
-          <li className='px-[5px] py-[10px] uppercase hover:text-primary cursor-pointer'><a href=""></a>MENU</li>
-          <li className='px-[5px] py-[10px] uppercase hover:text-primary cursor-pointer'><a href=""></a>ABOUT</li>
-          <li className='px-[5px] py-[10px] uppercase hover:text-primary cursor-pointer'><a href=""></a>BOOK TABLE</li>
+          <li className='px-[5px] py-[10px] uppercase hover:text-primary cursor-pointer'><Link href="/">Home</Link></li>
+          <li className='px-[5px] py-[10px] uppercase hover:text-primary cursor-pointer'><Link href="/menu">Menu</Link></li>
+          <li className='px-[5px] py-[10px] uppercase hover:text-primary cursor-pointer'><Link href="/about">about</Link></li>
+          <li className='px-[5px] py-[10px] uppercase hover:text-primary cursor-pointer'><Link href="/reservation">Book Table</Link></li>
         </ul>
       </nav>
       {isMenuModal && (
