@@ -85,15 +85,16 @@ const inputs=[{
   return (
     <form className='lg:p-8 flex-1 lg:mt-0 mt-5'>
       <Title addClass="text-[40px]"> Account Settings</Title>
-        <div>
+        <div className='grid lg:grid-cols-2 grid-cols-1  gap-4 mt-4'>
         {inputs.map((input) => (
           <Input
-            key="input.id"
+            key={input.id}
             {...input}
             onBlur={handleBlur}
             onChange={handleChange}
           />))}
         </div>
+        <button className='btn-primary mt-4'>Update</button>
       
     </form>
   )
