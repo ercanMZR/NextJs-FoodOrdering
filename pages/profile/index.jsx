@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import Account from "../components/profile/Account";
 import Password from "../components/profile/Password";
+import Order from "../components/profile/Order";
 
 const Profile = () => {
   const [tabs,setTabs]=useState(0);
@@ -41,6 +42,7 @@ const Profile = () => {
       </div>
       {tabs===0 && <Account/>}
       {tabs===1 && <Password/>}
+      {tabs===2 && <Order></Order>}
     </div>
   );
 };
