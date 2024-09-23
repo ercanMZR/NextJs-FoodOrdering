@@ -2,6 +2,8 @@ import React from 'react'
 import { useState } from 'react'
 import Image from 'next/image'
 import Title from '../components/ui/Title'
+import { addProduct } from '@/redux/cartSlice'
+import { useDispatch,useSelector } from 'react-redux'
 
 
 
@@ -22,6 +24,21 @@ const itemsExtra = [
       price: 3,
     },
   ];
+
+  const foodItems=[
+    {
+  id:1,
+  name:"Piiza 1",
+  price:10,
+  desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda fugit corporis ex laboriosam tenetur at ad aspernatur",
+  extraOptions:
+  [{
+id:1,
+name:"Extra 1",
+price:1,
+  }]
+    },
+  ]
   
 
 const Index = () => {
@@ -29,7 +46,10 @@ const Index = () => {
     const [price, setPrice] = useState(prices[0])
     const [size, setSize] = useState(0);
     const [extraItems,SetextraItems]=useState(itemsExtra)
-    const [extras,setExtras]=useState([])
+    const [extras,setExtras]=useState([]);
+    const cart=useSelector((state)=>state.cart);
+
+    const dispatch=useDispatch();
 
     const handleSize=(sizeIndex)=>{
       const difference=prices[sizeIndex]-prices[size]
@@ -53,7 +73,11 @@ const Index = () => {
 
     }
 
-    
+    const handleClick=()=>{
+      dispatch(addProduct({...foodItems[0],extras,price,quantity:1}))
+    }
+
+    console.log(cart);
   return (
     <div className='flex items-center md:h-[calc(100vh-88px)] gap-5 py-20 flex-wrap'>
         <div className='relative md:flex-1  md:w-[80%] md:h-[80%] w-36 h-36 mx-auto'>
@@ -96,7 +120,7 @@ Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti quis perspici
 
                 ))}
             </div>
-            <button className='btn-primary'>Add to Chart</button>
+            <button className='btn-primary' onClick={handleClick}>Add to Chart</button>
 
         </div>
     </div>

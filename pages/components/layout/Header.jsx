@@ -9,6 +9,7 @@ import Search from '../ui/Search';
 import { GiHamburgerMenu, GiCancel } from "react-icons/gi";
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
 
 
 
@@ -16,6 +17,7 @@ import Link from 'next/link';
 const Header = () => {
   const [isSearchModal, setIsSearchModal] = useState(false);
   const [isMenuModal, setIsMenuModal] = useState(false);
+  const cart =useSelector((state)=>state.cart)
 
   const router = useRouter();
 
@@ -39,8 +41,7 @@ const Header = () => {
           <li className='px-[5px] py-[10px] uppercase hover:text-primary cursor-pointer'><Link href="/about">about</Link></li>
           <li className='px-[5px] py-[10px] uppercase hover:text-primary cursor-pointer'><Link href="/reservation">Book Table</Link></li>
         </ul>
-      </nav>
-      {isMenuModal && (
+        {isMenuModal && (
             <button
               className="absolute  top-4 right-4 z-50"
               onClick={() => setIsMenuModal(false)}
@@ -48,9 +49,17 @@ const Header = () => {
               <GiCancel size={25} className=" transition-all" />
             </button>
           )}
+      </nav>
+      
       <div className='flex gap-x-4 items-center'>
-        <Link href="/auth/Login"><FaUser className='hover:text-primary transition-all cursor-pointer'></FaUser></Link>
-        <Link href="/cart"><FaShoppingBasket className='hover:text-primary transition-all cursor-pointer'></FaShoppingBasket></Link>
+        <Link href="/auth/Login"><span>
+        <FaUser className='hover:text-primary transition-all cursor-pointer'></FaUser>
+          </span></Link>
+        <Link href="/cart"><span className='relative'><FaShoppingBasket className='hover:text-primary transition-all cursor-pointer'></FaShoppingBasket>
+        <span className='w-4 h-4 text-xs grid place-content-center rounded-full bg-primary absolute -top-2 -right-3 text-black font-bold'>
+        {cart.products.length=== 0 ? "0" :cart.products.length}
+        </span>
+        </span></Link>
         <button onClick={() => setIsSearchModal(true)}>
             <FaSearch className="hover:text-primary transition-all cursor-pointer" />
           </button>
