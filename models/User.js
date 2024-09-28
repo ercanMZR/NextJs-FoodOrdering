@@ -1,40 +1,39 @@
-import Password from "@/pages/components/profile/Password";
 import mongoose from "mongoose";
-import { string } from "yup";
-
-const userSchema= new mongoose.Schema({
-    name:{
-        type:String,
-        required:true,
+const UserSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
     },
-    email:{
-        type:String,
-        required:true,
+    email: {
+      type: String,
+      required: true,
     },
-    phoneNumber:{
-        type:String,
+    phoneNumber: {
+      type: String,
     },
-    address:{
-        type:String,
+    address: {
+      type: String,
     },
-    job:{
-        type:String,
+    job: {
+      type: String,
     },
-    Password:{
-        type:String,
-        required:true,
+    job: {
+      type: String,
     },
-    confirmPassword:{
-        type:string,
-        required:true,
+    password: {
+      type: String,
+      required: true,
     },
-    emailVerified:{
-        type:String,
-        default:null,
-    }
-},
-{timestamps:true}
-
-)
-
-export default mongoose.models.User || mongoose.model("User",userSchema);
+    confirmPassword: {
+      type: String,
+      required: true,
+    },
+    emailVerified: {
+      type: String,
+      default: null,
+    },
+  },
+  { timestamps: true }
+);
+export default mongoose.models.User || mongoose.model("User", UserSchema);
