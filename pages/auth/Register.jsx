@@ -4,6 +4,7 @@ import Link from "next/link";
 import Input from "../components/form/Input";
 import Title from "../components/ui/Title";
 import { registerSchema } from "../schema/Register";
+import { toast } from "react-toastify";
 
 
 const Register = () => {
@@ -13,9 +14,15 @@ const Register = () => {
         `${process.env.NEXT_PUBLIC_API_URL}/users/register`,
         values
       );
+if(res.status===200){
+  toast.success("User created successfully")
+}
+
     } catch (err) {
+      toast.error(err.response.data.message)
       console.log(err);
     }
+    actions.resetForm();
   };
   const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
     useFormik({
