@@ -5,9 +5,11 @@ import Input from "../components/form/Input";
 import Title from "../components/ui/Title";
 import { registerSchema } from "../schema/Register";
 import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 
 
 const Register = () => {
+  const {push}=useRouter();
   const onSubmit = async (values, actions) => {
     try {
       const res = await axios.post(
@@ -16,6 +18,7 @@ const Register = () => {
       );
 if(res.status===200){
   toast.success("User created successfully")
+  push("/auth/login")
 }
 
     } catch (err) {

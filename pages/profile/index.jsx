@@ -1,13 +1,31 @@
 import Image from "next/image";
 import React from "react";
+import { getSession,signOut,useSession } from "next-auth/react";
 import { useState } from "react";
+import { useEffect } from "react";
 import Account from "../components/profile/Account";
 import Password from "../components/profile/Password";
 import Order from "../components/profile/Order";
 import Footer from "../components/admin/Footer";
+import { useRouter } from "next/router";
 
-const Profile = () => {
+const Profile = ({session}) => {
   const [tabs,setTabs]=useState(0);
+  const {push}=useRouter();
+
+
+  const handleSignOut=()=>{
+    if(confirm("Are you sure want to sign out")){
+      signOut({redirect:false})
+      push("/auth/login")
+    }
+  }
+
+  useEffect(() => {
+   
+ push("/auht/login")
+  }, [session,push])
+  
 
 
 
@@ -34,8 +52,8 @@ const Profile = () => {
           <i className="fa fa-motorcycle"></i>
           <button className="ml-1">Orders</button>
           </li>
-          <li className={'border w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${tabs===3 && "bg-primary text-white"}'}
-          onClick={()=>setTabs(3)}>
+          <li className={'border w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all }'}
+          onClick={handleSignOut}>
           <i className="fa fa-sign-out"> </i>
           <button className="ml-1">Exit</button>
           </li>
@@ -48,5 +66,22 @@ const Profile = () => {
     </div>
   );
 };
+export async function getServerSideProps({ req }) {
+  const session = await getSession({ req });
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/auth/login",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {
+      session,
+    },
+  };
+}
+
 
 export default Profile;
