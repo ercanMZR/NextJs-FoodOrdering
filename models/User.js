@@ -18,7 +18,7 @@ const UserSchema = new mongoose.Schema(
     job: {
       type: String,
     },
-    job: {
+    bio: {
       type: String,
     },
     password: {

@@ -10,7 +10,8 @@ import Order from "../components/profile/Order";
 import Footer from "../components/admin/Footer";
 import { useRouter } from "next/router";
 
-const Profile = ({ session }) => {
+const Profile = ({ user }) => {
+  const {data:session}=useSession();
   const [tabs, setTabs] = useState(0);
   const { push } = useRouter();
 
@@ -32,13 +33,13 @@ const Profile = ({ session }) => {
       <div className=" lg:w-80 w-100 flex-shrink-0">
         <div className="relative flex flex-col items-center px-10 py-5 border border-b ">
           <Image
-            src="/images/client2.jpg"
+            src={user.image ? user.image: "/images/client2.jpg"}
             alt=""
             width={100}
             height={100}
             className="rounded-full"
           />
-          <b className="text-2xl mt-1">John Doe</b>
+          <b className="text-2xl mt-1">{user.fullName}</b>
         </div>
         <ul className="text-center font-semibold">
           <li
@@ -79,28 +80,19 @@ const Profile = ({ session }) => {
           </li>
         </ul>
       </div>
-      {tabs === 0 && <Account />}
-      {tabs === 1 && <Password />}
+      {tabs === 0 && <Account user={user} />}
+      {tabs === 1 && <Password user={user}/>}
       {tabs === 2 && <Order></Order>}
     </div>
   );
 };
 export async function getServerSideProps({ req, params }) {
-  const session = await getSession({ req });
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/auth/login",
-        permanent: false,
-      },
-    };
-  }
-
+ 
   const user = await axios.get(
     `${process.env.NEXT_PUBLIC_API_URL}/users/${params.id}`)
   return {
     props: {
-      session,
+      user:user? user.data:null,
     },
   };
 }
