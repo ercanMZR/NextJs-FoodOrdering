@@ -35,7 +35,7 @@ export default NextAuth({
     }),
   ],
   pages: {
-    signIn: "/auth/login",
+    signIn: "/auth/Login",
   },
   database: process.env.MONGODB_URI,
   secret: "secret",
@@ -44,7 +44,7 @@ export default NextAuth({
 const signInUser =async ({user,password})=>{
   const isMAtch= await bcrypt.compare(password,user.password);
   if(!isMAtch){
-    throw new Error("Incorect password!")
+    throw new Error("Incorrect password!")
   }
   return user;
 }
