@@ -15,6 +15,7 @@ This project is a fast food restaurant website developed using React and Next.js
 On the frontend, React and Next.js were used to develop a dynamic and user-friendly interface. Tailwind CSS was implemented to ensure a responsive and visually appealing design. For state management, Redux Toolkit simplified handling functionalities for both users and admins.
 
 On the backend, Next.js handled authentication processes, API endpoints, and server-side rendering. MongoDB was used as the database to securely manage user, product, and order data.
+
 ![Project ](https://github.com/ercanMZR/NextJs-FoodOrdering/blob/main/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202024-12-06%20153737.png)
 ![Project ](https://github.com/ercanMZR/NextJs-FoodOrdering/blob/main/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202024-12-06%20154228.png)
 ![Project ](https://github.com/ercanMZR/NextJs-FoodOrdering/blob/main/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202024-12-06%20153854.png)
